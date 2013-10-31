@@ -5,12 +5,13 @@
     "appcelerator",
     "acs"
   ],
-  "version": "0.1.8",
+  "version": "0.9.0",
   "author": "Appcelerator, Inc. <info@appcelerator.com>",
   "maintainers": [
   ],
   "contributors":[
-    {"name":"Bill Wang","email":"bwang@appcelerator.com"}
+    {"name":"Bill Wang","email":"bwang@appcelerator.com"},
+    {"name":"Eddie Liu","email":"gliu@appcelerator.com"}
   ],
   "repository": {
     "type": "git",

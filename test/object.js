@@ -1,8 +1,6 @@
 var acs = require('../lib/acs');
 
-var sdk = acs.createCocoafish('');
-//var sdk = acs.createCocoafish('', '');
-//var sdk = acs.createCocoafish('', '', '');
+var sdk = acs.initACS('');
 
 var login = {
 		"login": "test",
