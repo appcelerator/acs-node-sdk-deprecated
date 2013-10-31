@@ -1,8 +1,8 @@
 var acs = require('../lib/acs');
 
-//var sdk = acs.createCocoafish('');
-var sdk = acs.createCocoafish('', '');
-//var sdk = acs.createCocoafish('', '', '');
+//var sdk = acs.createACSSDK('');
+var sdk = acs.createACSSDK('', '');
+//var sdk = acs.createACSSDK('', '', '');
 
 var user_id = null;
 var filePath = "/Users/bill/2012-07.xls";
