@@ -63,8 +63,7 @@ sdk.sendRequest('users/create.json', 'POST', {
 }, useSecure);
 ```
 
-
-More examples, please look up in the folder test.
+For more examples, please take a look at the [test folder](test/).
 
 
 Legal
