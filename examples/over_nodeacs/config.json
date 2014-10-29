@@ -1,23 +1,23 @@
 {
-    "routes": [{
-        "path": "/",
-        "callback": "application#index"
-    }, {
-        "path": "/login",
-        "method": "POST",
-        "callback": "application#login"
-    }, {
-        "path": "/showMe",
-        "method": "GET",
-        "callback": "application#showMe"
-    }],
-    "filters": [{
-        "path": "/",
-        "callback": ""
-    }],
-    "websockets": [{
-        "event": "",
-        "callback": ""
-    }],
-    "acs_appkey": ""
+	"routes": [{
+		"path": "/",
+		"callback": "application#index"
+	}, {
+		"path": "/login",
+		"method": "POST",
+		"callback": "application#login"
+	}, {
+		"path": "/showMe",
+		"method": "GET",
+		"callback": "application#showMe"
+	}],
+	"filters": [{
+		"path": "/",
+		"callback": ""
+	}],
+	"websockets": [{
+		"event": "",
+		"callback": ""
+	}],
+	"acs_appkey": ""
 }
