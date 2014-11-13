@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 			options: {
 				jshintrc: true
 			},
-			src: ['lib/**/*.js', '*.js']
+			src: ['*.js', 'lib/**/*.js', 'test/**/*.js']
 		},
 		clean: {
 			pre: ['*.log'],
@@ -66,6 +66,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 
 	// Register tasks
-	grunt.registerTask('default', ['clean:pre', 'mocha', 'jshint', 'clean:post']);
+	grunt.registerTask('default', ['clean:pre', 'jshint', 'mocha', 'clean:post']);
 	grunt.registerTask('cover', ['clean:pre', 'coverage', 'clean:post']);
 };

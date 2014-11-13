@@ -1,14 +1,7 @@
 var assert = require('assert'),
 	testUtil = require('./testUtil');
 
-var acsKey = process.env.ACS_APPKEY;
-if (!acsKey) {
-	console.error('Please create an ACS app and assign ACS_APPKEY in environment vars.');
-	process.exit(1);
-}
-console.log('MD5 of ACS_APPKEY: %s', testUtil.md5(acsKey));
-
-var acsApp = require('../index')(acsKey),
+var acsApp = testUtil.getTestACSApp(),
 	acsUsername = null,
 	acsPassword = 'cocoafish',
 	acsUserCount = 0;
@@ -16,6 +9,7 @@ var acsApp = require('../index')(acsKey),
 
 describe('Users Test', function() {
 	before(function(done) {
+		acsApp.clearSession();
 		testUtil.generateUsername(function(username) {
 			acsUsername = username;
 			console.log('\tGenerated acs user: %s', acsUsername);
@@ -26,7 +20,9 @@ describe('Users Test', function() {
 	describe('.queryAndCountUsers', function() {
 		it('Should return all users', function(done) {
 			this.timeout(20000);
-			acsApp.usersQuery(function(err, result) {
+			acsApp.usersQuery({
+				limit: 100
+			}, function(err, result) {
 				assert.ifError(err);
 				assert(result);
 				assert(result.body);
@@ -50,10 +46,10 @@ describe('Users Test', function() {
 				assert.equal(result.body.meta.code, 200);
 				// A bug of https://jira.appcelerator.org/browse/CLOUDSRV-4022
 				// assert.equal(result.body.meta.method_name, 'countUser');
-				assert(result.body.response);
-				assert(result.body.response.users);
-				console.log('\tCurrent users count: %s', result.body.response.users);
-				assert.equal(result.body.response.users, acsUserCount);
+				assert.equal(result.body.meta.method_name, 'usersCount');
+				assert(result.body.meta.count || (result.body.meta.count === 0));
+				console.log('\tCurrent users count: %s', result.body.meta.count);
+				assert.equal(result.body.meta.count, acsUserCount);
 				done();
 			});
 		});
@@ -90,11 +86,11 @@ describe('Users Test', function() {
 				assert.equal(result.body.meta.code, 200);
 				// A bug of https://jira.appcelerator.org/browse/CLOUDSRV-4022
 				// assert.equal(result.body.meta.method_name, 'countUser');
-				assert(result.body.response);
-				assert(result.body.response.users);
-				assert.equal(typeof result.body.response.users, 'number');
-				console.log('\tCurrent users count: %s', result.body.response.users);
-				assert.equal(result.body.response.users, acsUserCount + 1);
+				assert.equal(result.body.meta.method_name, 'usersCount');
+				assert(result.body.meta.count || (result.body.meta.count === 0));
+				assert.equal(typeof result.body.meta.count, 'number');
+				console.log('\tCurrent users count: %s', result.body.meta.count);
+				assert.equal(result.body.meta.count, acsUserCount + 1);
 				done();
 			});
 		});
@@ -162,6 +158,51 @@ describe('Users Test', function() {
 		});
 	});
 
+	describe('.updateUser', function() {
+		it('Should update user successfully with custom_fields as a hash', function(done) {
+			this.timeout(20000);
+			acsApp.usersUpdate({
+				custom_fields: {
+					test: true
+				}
+			}, function(err, result) {
+				assert.ifError(err);
+				assert(result);
+				assert(result.body);
+				assert(result.body.meta);
+				assert.equal(result.body.meta.code, 200);
+				assert.equal(result.body.meta.method_name, 'updateUser');
+				assert(result.body.response);
+				assert(result.body.response.users);
+				assert(result.body.response.users[0]);
+				assert(result.body.response.users[0].custom_fields);
+				assert(result.body.response.users[0].custom_fields.test);
+				assert.equal(result.body.response.users[0].custom_fields.test, true);
+				done();
+			});
+		});
+
+		it('Should update user successfully with custom_fields as a string', function(done) {
+			this.timeout(20000);
+			acsApp.usersUpdate({
+				custom_fields: '{"test":true}'
+			}, function(err, result) {
+				assert.ifError(err);
+				assert(result);
+				assert(result.body);
+				assert(result.body.meta);
+				assert.equal(result.body.meta.code, 200);
+				assert.equal(result.body.meta.method_name, 'updateUser');
+				assert(result.body.response);
+				assert(result.body.response.users);
+				assert(result.body.response.users[0]);
+				assert(result.body.response.users[0].custom_fields.test);
+				assert.equal(result.body.response.users[0].custom_fields.test, true);
+				done();
+			});
+		});
+	});
+
 	describe('.deleteUser', function() {
 		it('Should delete current user successfully', function(done) {
 			this.timeout(20000);
@@ -187,11 +228,11 @@ describe('Users Test', function() {
 					assert.equal(result.body.meta.code, 200);
 					// A bug of https://jira.appcelerator.org/browse/CLOUDSRV-4022
 					// assert.equal(result.body.meta.method_name, 'countUser');
-					assert(result.body.response);
-					assert(result.body.response.users);
-					assert.equal(typeof result.body.response.users, 'number');
-					console.log('\tCurrent users count: %s', result.body.response.users);
-					assert.equal(result.body.response.users, acsUserCount);
+					assert.equal(result.body.meta.method_name, 'usersCount');
+					assert(result.body.meta.count || (result.body.meta.count === 0));
+					assert.equal(typeof result.body.meta.count, 'number');
+					console.log('\tCurrent users count: %s', result.body.meta.count);
+					assert.equal(result.body.meta.count, acsUserCount);
 					done();
 				});
 			}, 2000);
