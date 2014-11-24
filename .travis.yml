@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - "0.10"
+
+notifications:
+  flowdock: 
+    secure: WsRft17mb7sF8N+9ZES51uArIi2DXDD5boQi7H3B+F415MmiMc2RdSHsheoAKzee22morisDaeYhR2ogB06jqygCtcMftjUaz9K/7dG6xaAuxX/usV20unHI1wyuGsx9tKQt84ZQJMjy8GtMfyNbhI/TF703ui4dSHhMjVHyqtg=

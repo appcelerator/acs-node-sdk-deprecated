@@ -1,0 +1,25 @@
+{
+	"node": true,
+	"proto": true,
+	"curly": true,
+	"esnext": true,
+	"indent": true,
+	"freeze": true,
+	"immed": true,
+	"latedef": true,
+	"newcap": true,
+	"noarg": true,
+	"noempty": true,
+	"nonew": true,
+	"quotmark": "single",
+	"undef": true,
+	"unused": true,
+	"globals": {
+		"describe": false,
+		"it": false,
+		"before": false,
+		"beforeEach": false,
+		"after": false,
+		"afterEach": false
+	}
+}
