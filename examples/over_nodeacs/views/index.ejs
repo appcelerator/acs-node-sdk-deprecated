@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ACS Node SDK Example on Node.ACS</title>
+    <link rel='stylesheet' href='/css/style.css' />
+</head>
+
+<body>
+    <h2>ACS Node SDK Example on Node.ACS</h2>
+    <%if(!hasACSAppKey) {%>
+        <p>Please fill in your ACS app key into config.json</p>
+    <%} else {%>
+        <p>Please try:<br/>
+            <ul>
+                <li>curl -b cookie.txt -c cookie.txt -X POST -F "login=YOUR_USERNAME" -F "password=YOUR_PASSWORD" http://localhost:8080/login</li>
+                <li>curl -b cookie.txt -c cookie.txt -X GET http://localhost:8080/showMe</li>
+         </p>
+    <%}%>
+</body>
+
+</html>

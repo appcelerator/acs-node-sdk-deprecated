@@ -1,33 +1,54 @@
 {
-  "name": "acs-node",
-  "description": "Appcelerator ACS SDK for Node.js",
-  "keywords": [
-    "appcelerator",
-    "acs"
-  ],
-  "version": "0.9.3",
-  "author": "Appcelerator, Inc. <info@appcelerator.com>",
-  "maintainers": [
-    {
-      "name": "Appcelerator",
-      "email": "npmjs@appcelerator.com",
-      "web": "http://www.appcelerator.com/"
-    }
-  ],
-  "contributors":[
-    {"name":"Bill Wang","email":"bwang@appcelerator.com"},
-    {"name":"Eddie Liu","email":"gliu@appcelerator.com"}
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/appcelerator/cocoafish-node-sdk.git"
-  },
-  "preferGlobal": true,
-  "dependencies": {
-  },
-  "license":"Apache Public License v2",
-  "main": "./index",
-  "engines": {
-    "node": ">= 0.6.0"
-  }
+	"name": "acs-node",
+	"description": "Appcelerator ACS SDK for NodeJS",
+	"keywords": [
+		"appcelerator",
+		"acs"
+	],
+	"version": "1.0.0-beta",
+	"author": "Appcelerator, Inc. <info@appcelerator.com>",
+	"maintainers": [{
+		"name": "Appcelerator",
+		"email": "npmjs@appcelerator.com",
+		"web": "http://www.appcelerator.com/"
+	}],
+	"contributors": [{
+		"name": "Bill Wang"
+	}, {
+		"name": "Paul Lv",
+		"email": "plv@appcelerator.com"
+	}, {
+		"name": "Eddie Liu",
+		"email": "gliu@appcelerator.com"
+	}, {
+		"name": "Kefeng Zhang",
+		"email": "kzhang@appcelerator.com"
+	}],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/appcelerator/acs-node-sdk"
+	},
+	"scripts": {
+		"test": "node_modules/.bin/grunt"
+	},
+	"dependencies": {
+		"lodash": "^2.4.1",
+		"request": "^2.47.0",
+		"tough-cookie": "^0.12.1"
+	},
+	"devDependencies": {
+		"colors": "^1.0.3",
+		"grunt": "^0.4.5",
+		"grunt-cli": "^0.1.13",
+		"grunt-contrib-clean": "^0.6.0",
+		"grunt-contrib-jshint": "^0.10.0",
+		"istanbul": "^0.3.2",
+		"mocha": "^2.0.1",
+		"should": "^4.1.0"
+	},
+	"license": "Apache Public License v2",
+	"main": "index.js",
+	"engines": {
+		"node": ">= 0.10.0"
+	}
 }
