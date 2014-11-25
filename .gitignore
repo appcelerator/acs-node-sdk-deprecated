@@ -1,0 +1,9 @@
+# General
+*.swp
+
+# NodeJS
+node_modules
+
+# Travis-ci
+coverage
+
