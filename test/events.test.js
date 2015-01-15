@@ -14,7 +14,8 @@ console.log('MD5 of ACS_APPKEY: %s', testUtil.md5(acsKey));
 var ACSNode = require('../index'),
 	acsApp = new ACSNode(acsKey, {
 		apiEntryPoint: acsEntryPoint,
-		prettyJson: true
+		prettyJson: true,
+		responseJsonDepth: 1
 	}),
 	acsUsername = null,
 	acsPassword = 'cocoafish',
