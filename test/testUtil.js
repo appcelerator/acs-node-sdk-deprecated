@@ -46,6 +46,9 @@ function processWait(acs, type, id, cb, interval, maxTries, i) {
 	if (!interval) {
 		interval = 2000;
 	}
+	if (!id) {
+		cb(new Error('id is undefined'));
+	}
 
 	var showMethod = type + 'sShow';
 	if (type == 'photo') {
