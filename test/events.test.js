@@ -92,7 +92,6 @@ describe('Events Test', function() {
 				assert.equal(result.body.meta.code, 200);
 				var obj = result.body.response.events[0];
 				event_id = obj.id;
-				assert.equal(obj.id, event_id);
 				assert.equal(obj.photo_id, photo_id);
 				assert.equal(obj.name, 'Test - events2');
 				done();

@@ -114,7 +114,8 @@ describe('Statuses Test', function() {
 			acsApp.statusesUpdate({
 				status_id: status_id,
 				event_id: event_id,
-				message: message
+				message: message,
+				response_json_depth: 1
 			}, function(err, result) {
 				assert.ifError(err);
 				assert(result.body);
@@ -123,7 +124,7 @@ describe('Statuses Test', function() {
 				assert.equal(result.body.meta.method_name, 'updateStatus');
 				var obj = result.body.response.statuses[0];
 				assert.equal(obj.message, 'Test - new status(new)');
-				assert.equal(obj.event.id, event_id);
+				assert.equal(obj.event_id, event_id);
 				done();
 			});
 		});
