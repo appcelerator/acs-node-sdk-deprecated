@@ -1,6 +1,7 @@
 language: node_js
 node_js:
   - "0.10"
+  - "0.12"
 
 # use docker for travis
 sudo: false
