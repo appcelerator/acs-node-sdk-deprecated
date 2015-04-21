@@ -5,7 +5,7 @@
     "appcelerator",
     "acs"
   ],
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Appcelerator, Inc. <info@appcelerator.com>",
   "maintainers": [
     {
@@ -49,7 +49,7 @@
   "dependencies": {
     "debug": "^2.1.1",
     "lodash": "^2.4.1",
-    "appc-request-ssl": "^1.0.19",
+    "request": "^2.55.0",
     "tough-cookie": "^0.12.1"
   },
   "devDependencies": {
