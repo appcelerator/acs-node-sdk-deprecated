@@ -1,1 +1,1 @@
-This is replaced by https://www.npmjs.com/package/arrowdb. Please obtain the latest sdk from https://www.npmjs.com/package/arrowdb.
+The old acs node sdk has been deprecated. Please download the new sdk at https://www.npmjs.com/package/arrowdb or  https://www.npmjs.com/package/arrowdb.
